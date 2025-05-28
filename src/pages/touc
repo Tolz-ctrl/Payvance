@@ -1,0 +1,264 @@
+
+import { Link } from 'react-router-dom';
+import {
+    UserGroupIcon,
+    ShieldCheckIcon,
+    SparklesIcon,
+    GlobeAltIcon,
+} from '@heroicons/react/24/outline';
+
+const About = () => {
+    return (
+        <div style={{
+            minHeight: '100vh',
+            backgroundColor: '#FFFFFF',
+        }}>
+            {/* Hero Section */}
+            <section style={{
+                padding: '80px 24px',
+                backgroundColor: '#121826',
+                color: '#FFFFFF',
+            }}>
+                <div style={{
+                    maxWidth: '1280px',
+                    margin: '0 auto',
+                    textAlign: 'center',
+                }}>
+                    <h1 style={{
+                        fontSize: '48px',
+                        fontWeight: 'bold',
+                        marginBottom: '24px',
+                    }}>
+                        About Payvance
+                    </h1>
+                    <p style={{
+                        fontSize: '20px',
+                        color: '#E6EAF1',
+                        maxWidth: '600px',
+                        margin: '0 auto',
+                        lineHeight: '1.6',
+                    }}>
+                        We're on a mission to simplify bill payments and financial management for everyone
+                    </p>
+                </div>
+            </section>
+
+            {/* Mission Section */}
+            <section style={{
+                padding: '80px 24px',
+                backgroundColor: '#FFFFFF',
+            }}>
+                <div style={{
+                    maxWidth: '1280px',
+                    margin: '0 auto',
+                }}>
+                    <div style={{
+                        display: 'grid',
+                        gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+                        gap: '48px',
+                        alignItems: 'center',
+                    }}>
+                        <div>
+                            <h2 style={{
+                                fontSize: '36px',
+                                fontWeight: 'bold',
+                                color: '#1A2233',
+                                marginBottom: '24px',
+                            }}>
+                                Our Mission
+                            </h2>
+                            <p style={{
+                                color: '#6A7385',
+                                lineHeight: '1.8',
+                                marginBottom: '24px',
+                            }}>
+                                At Payvance, we believe managing bills should be simple and stress-free. 
+                                Our platform is designed to give you complete control over your payments 
+                                while saving you time and eliminating the hassle of managing multiple 
+                                payment platforms.
+                            </p>
+                            <p style={{
+                                color: '#6A7385',
+                                lineHeight: '1.8',
+                            }}>
+                                We're committed to providing innovative solutions that make financial 
+                                management accessible to everyone, backed by robust security and 
+                                exceptional customer support.
+                            </p>
+                        </div>
+                        <div style={{
+                            display: 'grid',
+                            gridTemplateColumns: '1fr 1fr',
+                            gap: '24px',
+                        }}>
+                            {stats.map((stat, index) => (
+                                <div
+                                    key={index}
+                                    style={{
+                                        padding: '32px',
+                                        backgroundColor: '#F8FAFC',
+                                        borderRadius: '12px',
+                                        textAlign: 'center',
+                                    }}
+                                >
+                                    <div style={{
+                                        fontSize: '36px',
+                                        fontWeight: 'bold',
+                                        color: '#00C2FF',
+                                        marginBottom: '8px',
+                                    }}>
+                                        {stat.value}
+                                    </div>
+                                    <div style={{
+                                        color: '#6A7385',
+                                        fontSize: '14px',
+                                    }}>
+                                        {stat.label}
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Values Section */}
+            <section style={{
+                padding: '80px 24px',
+                backgroundColor: '#F8FAFC',
+            }}>
+                <div style={{
+                    maxWidth: '1280px',
+                    margin: '0 auto',
+                }}>
+                    <h2 style={{
+                        fontSize: '36px',
+                        fontWeight: 'bold',
+                        color: '#1A2233',
+                        marginBottom: '48px',
+                        textAlign: 'center',
+                    }}>
+                        Our Values
+                    </h2>
+                    <div style={{
+                        display: 'grid',
+                        gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+                        gap: '32px',
+                    }}>
+                        {values.map((value, index) => (
+                            <div
+                                key={index}
+                                style={{
+                                    backgroundColor: '#FFFFFF',
+                                    padding: '32px',
+                                    borderRadius: '12px',
+                                    boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
+                                }}
+                            >
+                                <value.icon style={{
+                                    width: '40px',
+                                    height: '40px',
+                                    color: '#00C2FF',
+                                    marginBottom: '16px',
+                                }} />
+                                <h3 style={{
+                                    fontSize: '20px',
+                                    fontWeight: 'bold',
+                                    color: '#1A2233',
+                                    marginBottom: '12px',
+                                }}>
+                                    {value.title}
+                                </h3>
+                                <p style={{
+                                    color: '#6A7385',
+                                    lineHeight: '1.6',
+                                }}>
+                                    {value.description}
+                                </p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* CTA Section */}
+            <section style={{
+                padding: '80px 24px',
+                backgroundColor: '#121826',
+                color: '#FFFFFF',
+            }}>
+                <div style={{
+                    maxWidth: '1280px',
+                    margin: '0 auto',
+                    textAlign: 'center',
+                }}>
+                    <h2 style={{
+                        fontSize: '36px',
+                        fontWeight: 'bold',
+                        marginBottom: '24px',
+                    }}>
+                        Join Our Growing Community
+                    </h2>
+                    <p style={{
+                        fontSize: '18px',
+                        color: '#E6EAF1',
+                        marginBottom: '32px',
+                        maxWidth: '600px',
+                        margin: '0 auto 32px',
+                    }}>
+                        Experience the future of bill payments with Payvance
+                    </p>
+                    <Link
+                        to="/register"
+                        style={{
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: '8px',
+                            backgroundColor: '#00C2FF',
+                            color: '#121826',
+                            padding: '16px 32px',
+                            borderRadius: '8px',
+                            textDecoration: 'none',
+                            fontWeight: 'bold',
+                            transition: 'all 0.2s ease',
+                        }}
+                    >
+                        Get Started Now
+                    </Link>
+                </div>
+            </section>
+        </div>
+    );
+};
+
+const stats = [
+    { value: '500K+', label: 'Active Users' },
+    { value: '₦1B+', label: 'Monthly Transactions' },
+    { value: '99.9%', label: 'Uptime' },
+    { value: '24/7', label: 'Support' },
+];
+
+const values = [
+    {
+        icon: UserGroupIcon,
+        title: 'Customer First',
+        description: 'We put our customers at the heart of everything we do, ensuring their needs drive our innovations.'
+    },
+    {
+        icon: ShieldCheckIcon,
+        title: 'Security',
+        description: 'We maintain the highest standards of security to protect our users financial data and transactions.'
+    },
+    {
+        icon: SparklesIcon,
+        title: 'Innovation',
+        description: 'We continuously evolve our platform to provide cutting-edge solutions for modern payment needs.'
+    },
+    {
+        icon: GlobeAltIcon,
+        title: 'Accessibility',
+        description: 'We make financial management tools accessible to everyone, regardless of their technical expertise.'
+    }
+];
+
+export default About;
