@@ -1,13 +1,11 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { CurrencyDollarIcon, EnvelopeIcon, LockClosedIcon, EyeIcon, EyeSlashIcon, ExclamationCircleIcon } from "@heroicons/react/24/outline";
-import AuthContext from "../context/AuthContext";
 
 export default function Login() {
   // Basic component with minimal dependencies to ensure it renders
   const navigate = useNavigate();
-  const auth = React.useContext(AuthContext);
-  
+
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -48,7 +46,7 @@ export default function Login() {
       try {
         const registeredUsers = JSON.parse(localStorage.getItem('registered_users') || '[]');
         console.log("DEBUG - Registered Users:", registeredUsers);
-        
+
         const authUser = localStorage.getItem('auth_user');
         const authStatus = localStorage.getItem('auth_status');
         console.log("DEBUG - Auth Status:", { authUser, authStatus });
@@ -56,12 +54,12 @@ export default function Login() {
         console.error("Error reading localStorage:", err);
       }
     };
-    
+
     debugLocalStorage();
   }, []);
 
   // Simple login handler
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
     setError("");
@@ -70,14 +68,14 @@ export default function Login() {
       // Get registered users directly from localStorage
       const registeredUsersJSON = localStorage.getItem('registered_users');
       const registeredUsers = registeredUsersJSON ? JSON.parse(registeredUsersJSON) : [];
-      
+
       console.log("Available registered users:", registeredUsers);
-      
+
       // Find user with matching email and password
       const user = registeredUsers.find(
-        (u) => u.email === formData.email && u.password === formData.password
+        (u: any) => u.email === formData.email && u.password === formData.password
       );
-      
+
       if (user) {
         // Store auth data directly
         localStorage.setItem('auth_user', JSON.stringify({
@@ -86,7 +84,7 @@ export default function Login() {
           email: user.email
         }));
         localStorage.setItem('auth_status', 'true');
-        
+
         // Navigate to home instead of dashboard
         navigate("/home", { replace: true });
       } else {
@@ -168,8 +166,8 @@ export default function Login() {
           <form onSubmit={handleSubmit}>
             {/* Email */}
             <div style={{marginBottom: "1.5rem"}}>
-              <label 
-                htmlFor="email" 
+              <label
+                htmlFor="email"
                 style={{
                   display: "block",
                   marginBottom: "8px",
@@ -199,8 +197,8 @@ export default function Login() {
 
             {/* Password */}
             <div style={{marginBottom: "1.5rem"}}>
-              <label 
-                htmlFor="password" 
+              <label
+                htmlFor="password"
                 style={{
                   display: "block",
                   marginBottom: "8px",

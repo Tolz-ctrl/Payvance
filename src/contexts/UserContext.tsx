@@ -1,15 +1,18 @@
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import { createContext, useContext, useState, ReactNode } from 'react';
 
 interface User {
     fullName?: string;
     email?: string;
     phoneNumber?: string;
+    profilePicture?: string;
 }
 
 interface UserContextType {
     user: User | null;
     setUser: (user: User | null) => void;
     updateUser: (userData: Partial<User>) => Promise<void>;
+    isLoading: boolean;
+    error: string | null;
 }
 
 const UserContext = createContext<UserContextType | undefined>(undefined);
@@ -26,7 +29,7 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
             // TODO: Replace with actual API call
             const response = await fetch('your-api-endpoint/user/update', {
                 method: 'PUT',
-                headers: { 
+                headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${localStorage.getItem('token')}`
                 },

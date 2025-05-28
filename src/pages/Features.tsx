@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { Link } from 'react-router-dom';
 import {
     WalletIcon,
@@ -7,8 +7,6 @@ import {
     ChartBarIcon,
     BanknotesIcon,
     ArrowPathIcon,
-    BellAlertIcon,
-    DocumentTextIcon,
 } from '@heroicons/react/24/outline';
 import BackButton from '../components/BackButton';
 

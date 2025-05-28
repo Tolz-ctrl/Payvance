@@ -1,4 +1,4 @@
-import React from "react";
+
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { SidebarProvider } from "./contexts/SidebarContext";
 import { UserProvider } from "./contexts/UserContext";
@@ -39,7 +39,7 @@ const App = () => {
             <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route path="/reset-password" element={<ResetPassword />} />
             <Route path="/terms" element={<TermsAndConditions />} />
-            
+
             {/* Protected routes with AppLayout */}
             <Route element={<AppLayout />}>
               <Route path="/home" element={<Home />} />

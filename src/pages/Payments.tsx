@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import {
     BanknotesIcon,
     ClockIcon,
@@ -21,7 +21,7 @@ interface UtilityBill {
 
 const Payments = () => {
     const [activeTab, setActiveTab] = useState<'pending' | 'history'>('pending');
-    const [bills, setBills] = useState<UtilityBill[]>([
+    const [bills] = useState<UtilityBill[]>([
         {
             id: '1',
             name: 'Electricity',
@@ -119,8 +119,8 @@ const Payments = () => {
                 padding: '24px',
                 border: '1px solid #E2E8F0'
             }}>
-                <h2 style={{ 
-                    fontSize: '18px', 
+                <h2 style={{
+                    fontSize: '18px',
                     fontWeight: 'bold',
                     marginBottom: '16px'
                 }}>
@@ -155,11 +155,11 @@ const Payments = () => {
     );
 };
 
-const BillCard = ({ 
-    bill, 
-    onPayNow, 
-    onToggleAutomation 
-}: { 
+const BillCard = ({
+    bill,
+    onPayNow,
+    onToggleAutomation
+}: {
     bill: UtilityBill;
     onPayNow: () => void;
     onToggleAutomation: () => void;
@@ -177,8 +177,8 @@ const BillCard = ({
             marginBottom: '16px'
         }}>
             {bill.logo ? (
-                <img 
-                    src={bill.logo} 
+                <img
+                    src={bill.logo}
                     alt={bill.provider}
                     style={{
                         width: '40px',
@@ -222,7 +222,7 @@ const BillCard = ({
                 alignItems: 'center'
             }}>
                 <span style={{ color: '#64748B' }}>Due Date</span>
-                <span style={{ 
+                <span style={{
                     color: bill.status === 'overdue' ? '#EF4444' : '#64748B',
                     display: 'flex',
                     alignItems: 'center',
@@ -272,11 +272,11 @@ const BillCard = ({
     </div>
 );
 
-const AutomationCard = ({ 
-    title, 
-    description, 
-    icon: Icon, 
-    onClick 
+const AutomationCard = ({
+    title,
+    description,
+    icon: Icon,
+    onClick
 }: {
     title: string;
     description: string;
@@ -306,13 +306,13 @@ const AutomationCard = ({
             <Icon style={{ width: '24px', height: '24px', color: '#00C2FF' }} />
         </div>
         <div>
-            <h3 style={{ 
+            <h3 style={{
                 fontWeight: 'bold',
                 marginBottom: '4px'
             }}>
                 {title}
             </h3>
-            <p style={{ 
+            <p style={{
                 fontSize: '14px',
                 color: '#64748B'
             }}>

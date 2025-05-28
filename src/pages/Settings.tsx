@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useUser } from '../contexts/UserContext';
 import Button from '../components/Button';
@@ -50,8 +50,7 @@ type TabType = 'profile' | 'security' | 'utilities' | 'payment' | 'priority' | '
 // Sortable Item Component for Priority List
 const SortableItem = ({ id, utility }: { id: string, utility: UtilityProvider }) => {
     const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({ id });
-    const [utilities, setUtilities] = useState<UtilityProvider[]>([]);
-    
+
     const style = {
         transform: CSS.Transform.toString(transform),
         transition,
@@ -84,10 +83,10 @@ const SortableItem = ({ id, utility }: { id: string, utility: UtilityProvider })
                     <label style={{ color: '#94A3B8', fontSize: '14px', display: 'block', marginBottom: '4px' }}>
                         Max Budget
                     </label>
-                    <input 
-                        type="number" 
+                    <input
+                        type="number"
                         defaultValue={utility.maxBudget || 0}
-                        style={{ 
+                        style={{
                             backgroundColor: '#1E293B',
                             border: '1px solid #2A3441',
                             borderRadius: '4px',
@@ -151,13 +150,13 @@ const Settings = () => {
     const navigate = useNavigate();
     const { setUser } = useUser();
     const [activeTab, setActiveTab] = useState<TabType>('profile');
-    
+
     const logout = () => {
         setUser(null);
     };
     const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
-    const [showAddUtility, setShowAddUtility] = useState(false);
-    const [showAddPayment, setShowAddPayment] = useState(false);
+    // const [showAddUtility, setShowAddUtility] = useState(false);
+    // const [showAddPayment, setShowAddPayment] = useState(false);
     const [isSaving, setIsSaving] = useState(false);
 
     // State for various settings
@@ -201,11 +200,11 @@ const Settings = () => {
 
     const handleDragEnd = (event: DragEndEvent) => {
         const { active, over } = event;
-        
+
         if (over && active.id !== over.id) {
             const oldIndex = priorityOrder.indexOf(active.id as string);
             const newIndex = priorityOrder.indexOf(over.id as string);
-            
+
             setPriorityOrder(arrayMove(priorityOrder, oldIndex, newIndex));
         }
     };
@@ -412,7 +411,7 @@ const Settings = () => {
                                 </div>
                             ))}
                             <Button
-                                onClick={() => setShowAddUtility(true)}
+                                onClick={() => {/* TODO: Implement add utility modal */}}
                             >
                                 Add Utility
                             </Button>
@@ -472,7 +471,7 @@ const Settings = () => {
                                 </div>
                             ))}
                             <Button
-                                onClick={() => setShowAddPayment(true)}
+                                onClick={() => {/* TODO: Implement add payment modal */}}
                             >
                                 Add Payment Method
                             </Button>
@@ -507,17 +506,17 @@ const Settings = () => {
                                     />
                                 </label>
                             </div>
-                            
+
                             <p style={{ color: '#94A3B8', fontSize: '14px', marginBottom: '16px' }}>
                                 Drag and drop to reorder your payment priorities
                             </p>
-                            
-                            <DndContext 
+
+                            <DndContext
                                 sensors={sensors}
                                 collisionDetection={closestCenter}
                                 onDragEnd={handleDragEnd}
                             >
-                                <SortableContext 
+                                <SortableContext
                                     items={priorityOrder}
                                     strategy={verticalListSortingStrategy}
                                 >
@@ -530,7 +529,7 @@ const Settings = () => {
                                     })}
                                 </SortableContext>
                             </DndContext>
-                            
+
                             <div style={styles.buttonContainer}>
                                 <Button
                                     variant="secondary"
@@ -614,42 +613,42 @@ const Settings = () => {
 
             {/* Tab Navigation */}
             <div style={styles.tabContainer}>
-                <div 
+                <div
                     style={{...styles.tab, ...(activeTab === 'profile' ? styles.activeTab : {})}}
                     onClick={() => setActiveTab('profile')}
                 >
                     <UserIcon style={{ width: '16px', height: '16px' }} />
                     Profile
                 </div>
-                <div 
+                <div
                     style={{...styles.tab, ...(activeTab === 'security' ? styles.activeTab : {})}}
                     onClick={() => setActiveTab('security')}
                 >
                     <ShieldCheckIcon style={{ width: '16px', height: '16px' }} />
                     Security
                 </div>
-                <div 
+                <div
                     style={{...styles.tab, ...(activeTab === 'utilities' ? styles.activeTab : {})}}
                     onClick={() => setActiveTab('utilities')}
                 >
                     <BuildingLibraryIcon style={{ width: '16px', height: '16px' }} />
                     Utilities
                 </div>
-                <div 
+                <div
                     style={{...styles.tab, ...(activeTab === 'payment' ? styles.activeTab : {})}}
                     onClick={() => setActiveTab('payment')}
                 >
                     <CreditCardIcon style={{ width: '16px', height: '16px' }} />
                     Payment
                 </div>
-                <div 
+                <div
                     style={{...styles.tab, ...(activeTab === 'priority' ? styles.activeTab : {})}}
                     onClick={() => setActiveTab('priority')}
                 >
                     <ArrowsUpDownIcon style={{ width: '16px', height: '16px' }} />
                     Priority
                 </div>
-                <div 
+                <div
                     style={{...styles.tab, ...(activeTab === 'notifications' ? styles.activeTab : {})}}
                     onClick={() => setActiveTab('notifications')}
                 >

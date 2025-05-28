@@ -14,7 +14,7 @@ export class BillPaymentService {
     };
 
     async validateMeter(provider: string, meterNumber: string, type: 'prepaid' | 'postpaid') {
-        if (UTILITY_PROVIDERS_CONFIG.ELECTRICITY[provider]) {
+        if (UTILITY_PROVIDERS_CONFIG.ELECTRICITY[provider as keyof typeof UTILITY_PROVIDERS_CONFIG.ELECTRICITY]) {
             return await axios.post(`${this.baxiConfig.baseURL}/services/electricity/verify`, {
                 service_type: provider.toLowerCase(),
                 meter_number: meterNumber,
@@ -41,7 +41,7 @@ export class BillPaymentService {
         throw new Error('Unsupported TV provider');
     }
 
-    async payBill(paymentDetails: {
+    async payBill(_paymentDetails: {
         provider: string,
         accountNumber: string,
         amount: number,
@@ -51,5 +51,6 @@ export class BillPaymentService {
     }) {
         // Implementation varies based on provider
         // Returns transaction reference for verification
+        throw new Error('Not implemented yet');
     }
 }

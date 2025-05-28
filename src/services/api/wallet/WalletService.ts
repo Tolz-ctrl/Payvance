@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { API_CONFIG } from '../config';
+// import { API_CONFIG } from '../config';
 
 export interface Transaction {
   id: string;
@@ -20,7 +20,7 @@ export interface WalletBalance {
 
 class WalletService {
   private baseUrl = 'https://api.payvance.com/v1'; // Replace with your actual API URL
-  
+
   async getWalletBalance(): Promise<WalletBalance> {
     try {
       const response = await axios.get(`${this.baseUrl}/wallet/balance`, {
@@ -34,7 +34,7 @@ class WalletService {
       throw error;
     }
   }
-  
+
   async getTransactionHistory(page = 1, limit = 10): Promise<Transaction[]> {
     try {
       const response = await axios.get(`${this.baseUrl}/wallet/transactions`, {
@@ -49,7 +49,7 @@ class WalletService {
       throw error;
     }
   }
-  
+
   async initiateWithdrawal(amount: number, bankCode: string, accountNumber: string): Promise<Transaction> {
     try {
       const response = await axios.post(`${this.baseUrl}/wallet/withdraw`, {
@@ -67,7 +67,7 @@ class WalletService {
       throw error;
     }
   }
-  
+
   async recordTransaction(transactionData: Partial<Transaction>): Promise<Transaction> {
     try {
       const response = await axios.post(`${this.baseUrl}/wallet/transactions`, transactionData, {
@@ -81,7 +81,7 @@ class WalletService {
       throw error;
     }
   }
-  
+
   async updateTransactionStatus(transactionId: string, status: Transaction['status']): Promise<Transaction> {
     try {
       const response = await axios.patch(`${this.baseUrl}/wallet/transactions/${transactionId}`, {

@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { 
+import {
     CurrencyDollarIcon,
     LockClosedIcon,
     EyeIcon,
@@ -30,25 +30,25 @@ const ResetPassword = () => {
         // Extract token from URL query parameters
         const params = new URLSearchParams(location.search);
         const resetToken = params.get('token');
-        
+
         if (!resetToken) {
             setIsTokenValid(false);
             setTokenError('Invalid or missing reset token. Please request a new password reset link.');
             setIsTokenValidating(false);
             return;
         }
-        
+
         setToken(resetToken);
-        
+
         // In a real app, you would validate the token with your API
         const validateToken = async () => {
             try {
                 setIsTokenValidating(true);
-                
+
                 // Simulate API call to validate token
                 // const response = await axios.post('/api/auth/validate-reset-token', { token: resetToken });
                 await new Promise(resolve => setTimeout(resolve, 1000));
-                
+
                 // For demo purposes, we'll consider tokens starting with "valid" as valid
                 if (!resetToken.startsWith('valid')) {
                     setIsTokenValid(false);
@@ -65,7 +65,7 @@ const ResetPassword = () => {
                 setIsTokenValidating(false);
             }
         };
-        
+
         validateToken();
     }, [location]);
 
@@ -102,35 +102,36 @@ const ResetPassword = () => {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setError('');
-        
+
         // Validate passwords
         if (!formData.password) {
             setError('Password is required');
             return;
         }
-        
+
         if (!validatePassword(formData.password)) {
             setError('Password must be at least 8 characters and contain at least one letter and one number');
             return;
         }
-        
+
         if (formData.password !== formData.confirmPassword) {
             setError('Passwords do not match');
             return;
         }
-        
+
         setIsLoading(true);
-        
+
         try {
             // In a real app, you would call your API here
             // const response = await axios.post('/api/auth/reset-password', {
             //     token,
             //     password: formData.password
             // });
-            
-            // Simulate API call
+
+            // Simulate API call - using token for validation
+            console.log('Resetting password with token:', token);
             await new Promise(resolve => setTimeout(resolve, 1500));
-            
+
             setIsSuccess(true);
         } catch (err: any) {
             if (err.response && err.response.data && err.response.data.message) {
@@ -163,7 +164,7 @@ const ResetPassword = () => {
                 padding: '24px',
                 borderBottom: '1px solid #E2E8F0'
             }}>
-                <Link 
+                <Link
                     to="/"
                     style={{
                         display: 'flex',
@@ -173,15 +174,15 @@ const ResetPassword = () => {
                         width: 'fit-content'
                     }}
                 >
-                    <CurrencyDollarIcon 
-                        style={{ 
-                            width: '32px', 
+                    <CurrencyDollarIcon
+                        style={{
+                            width: '32px',
                             height: '32px',
                             color: '#00C2FF'
-                        }} 
+                        }}
                     />
-                    <span style={{ 
-                        fontSize: '24px', 
+                    <span style={{
+                        fontSize: '24px',
                         fontWeight: 'bold',
                         color: '#121826'
                     }}>
@@ -250,13 +251,13 @@ const ResetPassword = () => {
                                 justifyContent: 'center',
                                 margin: '0 auto 24px'
                             }}>
-                                <ExclamationTriangleIcon style={{ 
-                                    width: '32px', 
-                                    height: '32px', 
-                                    color: '#EF4444' 
+                                <ExclamationTriangleIcon style={{
+                                    width: '32px',
+                                    height: '32px',
+                                    color: '#EF4444'
                                 }} />
                             </div>
-                            
+
                             <h2 style={{
                                 fontSize: '20px',
                                 fontWeight: 'bold',
@@ -265,14 +266,14 @@ const ResetPassword = () => {
                             }}>
                                 Invalid Reset Link
                             </h2>
-                            
+
                             <p style={{
                                 color: '#64748B',
                                 marginBottom: '24px'
                             }}>
                                 {tokenError}
                             </p>
-                            
+
                             <div style={{
                                 display: 'flex',
                                 flexDirection: 'column',
@@ -297,7 +298,7 @@ const ResetPassword = () => {
                                 >
                                     Request a new reset link
                                 </Link>
-                                
+
                                 <Link
                                     to="/login"
                                     style={{
@@ -334,13 +335,13 @@ const ResetPassword = () => {
                                 justifyContent: 'center',
                                 margin: '0 auto 24px'
                             }}>
-                                <CheckCircleIcon style={{ 
-                                    width: '32px', 
-                                    height: '32px', 
-                                    color: '#22C55E' 
+                                <CheckCircleIcon style={{
+                                    width: '32px',
+                                    height: '32px',
+                                    color: '#22C55E'
                                 }} />
                             </div>
-                            
+
                             <h2 style={{
                                 fontSize: '20px',
                                 fontWeight: 'bold',
@@ -349,14 +350,14 @@ const ResetPassword = () => {
                             }}>
                                 Password Reset Successful
                             </h2>
-                            
+
                             <p style={{
                                 color: '#64748B',
                                 marginBottom: '24px'
                             }}>
                                 Your password has been successfully reset. You can now log in with your new password.
                             </p>
-                            
+
                             <button
                                 onClick={() => navigate('/login')}
                                 style={{
@@ -408,7 +409,7 @@ const ResetPassword = () => {
                             <form onSubmit={handleSubmit}>
                                 {/* New Password Input */}
                                 <div style={{ marginBottom: '16px' }}>
-                                    <label 
+                                    <label
                                         htmlFor="password"
                                         style={{
                                             display: 'block',
@@ -464,7 +465,7 @@ const ResetPassword = () => {
 
                                 {/* Confirm Password Input */}
                                 <div style={{ marginBottom: '24px' }}>
-                                    <label 
+                                    <label
                                         htmlFor="confirmPassword"
                                         style={{
                                             display: 'block',

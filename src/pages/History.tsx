@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import {
     ArrowDownIcon,
     ArrowUpIcon,
@@ -17,10 +17,10 @@ interface Transaction {
 }
 
 const History: React.FC = () => {
-    const [dateRange, setDateRange] = useState({ from: '', to: '' });
-    const [selectedType, setSelectedType] = useState('all');
-    const [selectedStatus, setSelectedStatus] = useState('all');
-    const [searchTerm, setSearchTerm] = useState('');
+    // const [dateRange, setDateRange] = useState({ from: '', to: '' });
+    const [selectedType] = useState('all');
+    const [selectedStatus] = useState('all');
+    const [searchTerm] = useState('');
 
     // Example transaction data
     const [transactions] = useState<Transaction[]>([
@@ -61,7 +61,7 @@ const History: React.FC = () => {
                             transaction.reference.toLowerCase().includes(searchTerm.toLowerCase());
         const matchesType = selectedType === 'all' || transaction.type === selectedType;
         const matchesStatus = selectedStatus === 'all' || transaction.status === selectedStatus;
-        
+
         return matchesSearch && matchesType && matchesStatus;
     });
 
@@ -118,7 +118,7 @@ const History: React.FC = () => {
                     </thead>
                     <tbody>
                         {filteredTransactions.map((transaction) => (
-                            <tr 
+                            <tr
                                 key={transaction.id}
                                 style={{ borderTop: '1px solid #E2E8F0' }}
                             >
@@ -132,14 +132,14 @@ const History: React.FC = () => {
                                         gap: '4px',
                                         color: transaction.type === 'credit' ? '#10B981' : '#EF4444'
                                     }}>
-                                        {transaction.type === 'credit' ? 
+                                        {transaction.type === 'credit' ?
                                             <ArrowUpIcon style={{ width: '16px', height: '16px' }} /> :
                                             <ArrowDownIcon style={{ width: '16px', height: '16px' }} />
                                         }
                                         {transaction.type}
                                     </span>
                                 </td>
-                                <td style={{ 
+                                <td style={{
                                     padding: '12px',
                                     textAlign: 'right',
                                     color: transaction.type === 'credit' ? '#10B981' : '#EF4444'
@@ -151,7 +151,7 @@ const History: React.FC = () => {
                                         padding: '4px 8px',
                                         borderRadius: '4px',
                                         fontSize: '14px',
-                                        backgroundColor: 
+                                        backgroundColor:
                                             transaction.status === 'successful' ? '#DEF7EC' :
                                             transaction.status === 'pending' ? '#FEF3C7' : '#FEE2E2',
                                         color:

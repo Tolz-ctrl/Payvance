@@ -1,5 +1,5 @@
-import React, { useState,  } from 'react';
-// import { ArrowRightIcon, CurrencyDollarIcon } from "@heroicons/react/24/outline";
+import { useState, useEffect } from 'react';
+import { ArrowRightIcon } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
 import {
     UserGroupIcon,
@@ -11,17 +11,16 @@ import {
 } from '@heroicons/react/24/outline';
 import Collab from "../assets/collab.jpg";
 import Founding from "../assets/founding.jpg";
-import { LogoService } from '../services/api/logoService';
 import BackButton from '../components/BackButton';
 // Service Card Component with animation
-const ServiceCard = ({ 
-  icon, 
-  title, 
-  description, 
-  details 
-}: { 
-  icon: string; 
-  title: string; 
+const ServiceCard = ({
+  icon,
+  title,
+  description,
+  details
+}: {
+  icon: string;
+  title: string;
   description: string;
   details?: string[];
 }) => {
@@ -113,24 +112,24 @@ const ServiceCard = ({
         }}
       >
         <div style={{ marginTop: '2rem', width: '100%' }}>
-          <p style={{ 
-            color: "#475569", 
+          <p style={{
+            color: "#475569",
             marginBottom: '1rem',
             fontSize: '0.9rem',
             textAlign: 'center'
           }}>
             {description}
           </p>
-          
+
           {isHovered && details && details.length > 0 && (
-            <ul style={{ 
-              listStyleType: 'none', 
+            <ul style={{
+              listStyleType: 'none',
               padding: 0,
               margin: 0,
               marginTop: '1rem'
             }}>
               {details.map((detail, index) => (
-                <li key={index} style={{ 
+                <li key={index} style={{
                   padding: '0.5rem',
                   marginBottom: '0.5rem',
                   backgroundColor: '#f1f5f9',
@@ -151,7 +150,7 @@ const ServiceCard = ({
 };
 
 // Value Card Component
-const ValueCard = ({ icon, title, description }: { icon: string; title: string; description: string }) => {
+const ValueCard = ({ icon, title, description }: { icon: React.ReactNode; title: string; description: string }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -185,14 +184,14 @@ const ValueCard = ({ icon, title, description }: { icon: string; title: string; 
 };
 
 // Team Member Component
-const TeamMember = ({ 
-  name, 
-  role, 
-  image, 
-  description 
-}: { 
-  name: string; 
-  role: string; 
+const TeamMember = ({
+  name,
+  role,
+  image,
+  description
+}: {
+  name: string;
+  role: string;
   image: string;
   description?: string;
 }) => {
@@ -231,7 +230,7 @@ const TeamMember = ({
             transition: "filter 0.3s ease",
           }}
         />
-        
+
         {/* Overlay with description that appears on hover */}
         {description && (
           <div
@@ -250,11 +249,11 @@ const TeamMember = ({
               transition: "opacity 0.3s ease",
             }}
           >
-            <p style={{ 
-              color: "white", 
-              fontSize: "0.9rem", 
+            <p style={{
+              color: "white",
+              fontSize: "0.9rem",
               lineHeight: "1.5",
-              textAlign: "center" 
+              textAlign: "center"
             }}>
               {description}
             </p>
@@ -340,57 +339,9 @@ const SecondaryButton = ({ href, children }: { href: string; children: React.Rea
   );
 };
 
-// Dark Button Component
-const DarkButton = ({ href, children }: { href: string; children: React.ReactNode }) => {
-  const [isHovered, setIsHovered] = useState(false);
 
-  return (
-    <Link
-      to={href}
-      style={{
-        display: "inline-flex",
-        alignItems: "center",
-        gap: "0.5rem",
-        padding: "0.75rem 1.5rem",
-        borderRadius: "0.5rem",
-        backgroundColor: isHovered ? "#334155" : "#1e293b",
-        border: "1px solid #334155",
-        color: "white",
-        fontWeight: 500,
-        textDecoration: "none",
-        transition: "background-color 0.2s",
-      }}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
-      {children}
-    </Link>
-  );
-};
 
-// Arrow Right Icon Component
-const ArrowRightIcon = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="16"
-    height="16"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    style={{
-      marginLeft: "0.5rem",
-      height: "1rem",
-      width: "1rem",
-      verticalAlign: "middle",
-    }}
-  >
-    <path d="M5 12h14"></path>
-    <path d="m12 5 7 7-7 7"></path>
-  </svg>
-)
+
 
 // Testimonial Card Component
 const TestimonialCard = ({ quote, author, company }: { quote: string; author: string; company: string }) => {
@@ -421,13 +372,13 @@ const TestimonialCard = ({ quote, author, company }: { quote: string; author: st
 }
 
 // Partner Category Component with improved logo handling
-const PartnerCategory = ({ 
-  title, 
-  icon, 
-  companies 
-}: { 
-  title: string; 
-  icon: string; 
+const PartnerCategory = ({
+  title,
+  icon,
+  companies
+}: {
+  title: string;
+  icon: string;
   companies: {name: string, domain?: string, logoUrl?: string}[];
 }) => {
   const [expandedCompany, setExpandedCompany] = useState<string | null>(null);
@@ -441,14 +392,14 @@ const PartnerCategory = ({
     if (company.logoUrl) {
       return company.logoUrl;
     }
-    
+
     // Otherwise use the Brandfetch CDN
     if (company.domain) {
       // Remove protocol and www if present
       const cleanDomain = company.domain.replace(/^(https?:\/\/)?(www\.)?/, '');
       return `https://cdn.brandfetch.io/${cleanDomain}/w/512/h/512/logo?c=1idQOP3w5WG5h4g__Gn`;
     }
-    
+
     // Fallback to placeholder
     return `https://via.placeholder.com/150/0088cc/FFFFFF?text=${company.name.charAt(0)}`;
   };
@@ -466,30 +417,30 @@ const PartnerCategory = ({
 
   return (
     <div style={{ marginBottom: "3rem" }}>
-      <div style={{ 
-        display: "flex", 
-        alignItems: "center", 
+      <div style={{
+        display: "flex",
+        alignItems: "center",
         marginBottom: "1.5rem",
         gap: "0.75rem"
       }}>
         <span style={{ fontSize: "1.5rem" }}>{icon}</span>
-        <h3 style={{ 
-          fontSize: "1.25rem", 
-          fontWeight: 600, 
+        <h3 style={{
+          fontSize: "1.25rem",
+          fontWeight: 600,
           color: "#0f172a",
           margin: 0
         }}>
           {title}
         </h3>
       </div>
-      
-      <div style={{ 
-        display: "grid", 
-        gridTemplateColumns: "repeat(auto-fill, minmax(120px, 1fr))", 
-        gap: "1.5rem" 
+
+      <div style={{
+        display: "grid",
+        gridTemplateColumns: "repeat(auto-fill, minmax(120px, 1fr))",
+        gap: "1.5rem"
       }}>
         {companies.map((company, index) => (
-          <div 
+          <div
             key={index}
             style={{
               padding: "1rem",
@@ -501,10 +452,10 @@ const PartnerCategory = ({
             onClick={() => setExpandedCompany(expandedCompany === company.name ? null : company.name)}
             title={company.name} // Add title attribute for tooltip on hover
           >
-            <div style={{ 
-              height: "60px", 
-              display: "flex", 
-              alignItems: "center", 
+            <div style={{
+              height: "60px",
+              display: "flex",
+              alignItems: "center",
               justifyContent: "center",
               position: "relative"
             }}>
@@ -519,9 +470,9 @@ const PartnerCategory = ({
                   animation: "spin 1s linear infinite"
                 }} />
               )}
-              <img 
-                src={getLogoUrl(company)} 
-                alt={company.name} 
+              <img
+                src={getLogoUrl(company)}
+                alt={company.name}
                 style={{
                   maxWidth: "100%",
                   maxHeight: "60px",
@@ -547,9 +498,9 @@ interface FAQ {
 }
 
 // Main Component
-const AboutPage: React.FC = () => {
+const AboutPage = () => {
   // Add a style tag for the spinner animation
-  React.useEffect(() => {
+  useEffect(() => {
     const styleTag = document.createElement('style');
     styleTag.innerHTML = `
       @keyframes spin {
@@ -558,7 +509,7 @@ const AboutPage: React.FC = () => {
       }
     `;
     document.head.appendChild(styleTag);
-    
+
     return () => {
       document.head.removeChild(styleTag);
     };
@@ -728,23 +679,23 @@ const AboutPage: React.FC = () => {
       { name: "LAWMA", domain: "lawma.gov.ng" },
     ],
     telecom: [
-      { 
-        name: "MTN", 
+      {
+        name: "MTN",
         domain: "mtn.com",
         logoUrl: "https://www.mtn.com/wp-content/themes/mtn-refresh/public/img/mtn-logo.svg"
       },
-      { 
-        name: "Airtel", 
+      {
+        name: "Airtel",
         domain: "airtel.com.ng",
         logoUrl: "https://cdn.brandfetch.io/airtel.com/w/512/h/128/logo?c=1idQOP3w5WG5h4g__Gn"
       },
-      { 
-        name: "Glo", 
+      {
+        name: "Glo",
         domain: "gloworld.com",
-        logoUrl: "https://cdn.brandfetch.io/gloworld.com/w/70/h/70/logo?c=1idQOP3w5WG5h4g__Gn" 
+        logoUrl: "https://cdn.brandfetch.io/gloworld.com/w/70/h/70/logo?c=1idQOP3w5WG5h4g__Gn"
       },
-      { 
-        name: "9mobile", 
+      {
+        name: "9mobile",
         domain: "9mobile.com.ng",
         logoUrl: "https://cdn.brandfetch.io/9mobile.com.ng/w/305/h/512/logo?c=1idQOP3w5WG5h4g__Gn"
       },
@@ -753,54 +704,54 @@ const AboutPage: React.FC = () => {
       { name: "Swift Networks", domain: "swiftng.com" },
     ],
     entertainment: [
-      { 
+      {
         name: "DSTV", logoUrl: "/icons/dstv.jpg"
       },
-      { 
+      {
         name: "GOTV", logoUrl: "/icons/gotv.jpg"
       },
       { name: "StarTimes", logoUrl: "/icons/startimes.jpg" },
-      { 
-        name: "Netflix", 
+      {
+        name: "Netflix",
         domain: "netflix.com",
         logoUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/1200px-Netflix_2015_logo.svg.png"
       },
-      { 
-        name: "Spotify", 
+      {
+        name: "Spotify",
         domain: "spotify.com",
         logoUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Spotify_logo_without_text.svg/1200px-Spotify_logo_without_text.svg.png"
       },
-      { 
-        name: "Amazon Prime", 
+      {
+        name: "Amazon Prime",
         domain: "amazon.com",
         logoUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Amazon_Prime_Logo.svg/1200px-Amazon_Prime_Logo.svg.png"
       },
-      { 
-        name: "YouTube Premium", 
+      {
+        name: "YouTube Premium",
         domain: "youtube.com",
         logoUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1200px-YouTube_full-color_icon_%282017%29.svg.png"
       },
     ],
     technology: [
-      { 
-        name: "Paystack", 
+      {
+        name: "Paystack",
         domain: "paystack.com",
         logoUrl: "https://cdn.brandfetch.io/paystack.com/w/512/h/91/logo?c=1idQOP3w5WG5h4g__Gn"
       },
-      { 
-        name: "Flutterwave", 
+      {
+        name: "Flutterwave",
         domain: "flutterwave.com",
         logoUrl: "https://cdn.brandfetch.io/flutterwave.com/w/512/h/81/logo?c=1idQOP3w5WG5h4g__Gn"
       },
       { name: "Mono", domain: "mono.co" },
       { name: "Okra", domain: "okra.ng" },
-      { 
-        name: "AWS", 
+      {
+        name: "AWS",
         domain: "aws.amazon.com",
         logoUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Amazon_Web_Services_Logo.svg/1200px-Amazon_Web_Services_Logo.svg.png"
       },
-      { 
-        name: "Google Cloud", 
+      {
+        name: "Google Cloud",
         domain: "cloud.google.com",
         logoUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Google_Cloud_logo.svg/1200px-Google_Cloud_logo.svg.png"
       },
@@ -907,15 +858,15 @@ const AboutPage: React.FC = () => {
                   marginBottom: "1.5rem",
                 }}
               >
-                At Payvance, we believe managing bills should be simple and stress-free. 
-                                Our platform is designed to give you complete control over your payments 
-                                while saving you time and eliminating the hassle of managing multiple 
+                At Payvance, we believe managing bills should be simple and stress-free.
+                                Our platform is designed to give you complete control over your payments
+                                while saving you time and eliminating the hassle of managing multiple
                                 payment platforms.
               </p>
               <div style={{ marginBottom: "1rem" }}>
                 <PrimaryButton href="/contact">
                   Get in touch
-                  <ArrowRightIcon style={{ width: "20px", height: "20px" }} />
+                  <ArrowRightIcon />
                 </PrimaryButton>
                 <SecondaryButton href="/careers">Join our team</SecondaryButton>
               </div>
@@ -981,8 +932,8 @@ const AboutPage: React.FC = () => {
               Our Mission & Values
             </h2>
             <p style={{ fontSize: "1.125rem", color: "#475569" }}>
-            We're committed to providing innovative solutions that make financial 
-                                management accessible to everyone, backed by robust security and 
+            We're committed to providing innovative solutions that make financial
+                                management accessible to everyone, backed by robust security and
                                 exceptional customer support.
             </p>
           </div>
@@ -1001,10 +952,10 @@ const AboutPage: React.FC = () => {
                   color:"#00C2FF"
                 }}
               >
-                <ValueCard 
-                  icon={<value.icon style={{ width: "24px", height: "24px" }} />} 
-                  title={value.title} 
-                  description={value.description} 
+                <ValueCard
+                  icon={<value.icon style={{ width: "24px", height: "24px" }} />}
+                  title={value.title}
+                  description={value.description}
                 />
               </div>
             ))}
@@ -1052,13 +1003,13 @@ const AboutPage: React.FC = () => {
                     Our Story
                   </h2>
                   <p style={{ fontSize: "1.125rem", color: "#475569", marginBottom: "1.5rem" }}>
-                  In Nigeria, managing bills is more than just a monthly routine—it's a constant source of stress. 
-                  Between unstable electricity, unexpected data cutoffs, and last-minute DSTV renewals, utility payments 
+                  In Nigeria, managing bills is more than just a monthly routine—it's a constant source of stress.
+                  Between unstable electricity, unexpected data cutoffs, and last-minute DSTV renewals, utility payments
                   feel like a never-ending chore
                   </p>
                   <p style={{ fontSize: "1.125rem", color: "#475569", marginBottom: "1.5rem" }}>
-                  But the real headache? Juggling multiple apps, bank transfers, USSD codes, 
-                  and payment portals—each with their own logins, fees, and failed transaction 
+                  But the real headache? Juggling multiple apps, bank transfers, USSD codes,
+                  and payment portals—each with their own logins, fees, and failed transaction
                   risks.It’s chaotic, time-consuming, and often unreliable.
                   </p>
                   <p style={{ fontSize: "1.125rem", color: "#475569", marginBottom: "1.5rem" }}>
@@ -1120,18 +1071,18 @@ const AboutPage: React.FC = () => {
           </div>
 
           <div style={{ textAlign: "center" }}>
-            <div style={{ 
-              display: "grid", 
-              gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", 
+            <div style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
               gap: "1.5rem",
               maxWidth: "1200px",
               margin: "0 auto"
             }}>
               {services.map((service, index) => (
-                <ServiceCard 
-                  key={index} 
-                  icon={service.icon} 
-                  title={service.title} 
+                <ServiceCard
+                  key={index}
+                  icon={service.icon}
+                  title={service.title}
                   description={service.description}
                   details={service.details}
                 />
@@ -1169,11 +1120,11 @@ const AboutPage: React.FC = () => {
 
           <div style={{ textAlign: "center", marginLeft: "-1rem", marginRight: "-1rem", fontSize: "1.75rem" }}>
             {team.map((member, index) => (
-              <TeamMember 
-                key={index} 
-                name={member.name} 
-                role={member.role} 
-                image={member.image} 
+              <TeamMember
+                key={index}
+                name={member.name}
+                role={member.role}
+                image={member.image}
                 description={member.description}
               />
             ))}
@@ -1302,28 +1253,28 @@ const AboutPage: React.FC = () => {
           </div>
 
           <div>
-            <PartnerCategory 
-              title="Utility & Billers" 
-              icon="⚡" 
-              companies={partnerCompanies.utilities} 
+            <PartnerCategory
+              title="Utility & Billers"
+              icon="⚡"
+              companies={partnerCompanies.utilities}
             />
-            
-            <PartnerCategory 
-              title="Telecom & Internet Providers" 
-              icon="📶" 
-              companies={partnerCompanies.telecom} 
+
+            <PartnerCategory
+              title="Telecom & Internet Providers"
+              icon="📶"
+              companies={partnerCompanies.telecom}
             />
-            
-            <PartnerCategory 
-              title="Entertainment & Subscriptions" 
-              icon="📺" 
-              companies={partnerCompanies.entertainment} 
+
+            <PartnerCategory
+              title="Entertainment & Subscriptions"
+              icon="📺"
+              companies={partnerCompanies.entertainment}
             />
-            
-            <PartnerCategory 
-              title="Technology & Payment Partners" 
-              icon="💼" 
-              companies={partnerCompanies.technology} 
+
+            <PartnerCategory
+              title="Technology & Payment Partners"
+              icon="💼"
+              companies={partnerCompanies.technology}
             />
           </div>
         </div>

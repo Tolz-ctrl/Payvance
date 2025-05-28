@@ -1,10 +1,8 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 import BackButton from '../components/BackButton';
 
 const Contact = () => {
   const [agreed, setAgreed] = useState(false);
-  const navigate = useNavigate();
 
   return (
     <div style={{
@@ -74,8 +72,8 @@ const Contact = () => {
             gap: '2rem',
           }}>
             <div>
-              <label 
-                htmlFor="first-name" 
+              <label
+                htmlFor="first-name"
                 style={{
                   display: 'block',
                   fontSize: '0.875rem',
@@ -108,8 +106,8 @@ const Contact = () => {
               </div>
             </div>
             <div>
-              <label 
-                htmlFor="last-name" 
+              <label
+                htmlFor="last-name"
                 style={{
                   display: 'block',
                   fontSize: '0.875rem',
@@ -143,8 +141,8 @@ const Contact = () => {
             </div>
           </div>
           <div>
-            <label 
-              htmlFor="company" 
+            <label
+              htmlFor="company"
               style={{
                 display: 'block',
                 fontSize: '0.875rem',
@@ -177,8 +175,8 @@ const Contact = () => {
             </div>
           </div>
           <div>
-            <label 
-              htmlFor="email" 
+            <label
+              htmlFor="email"
               style={{
                 display: 'block',
                 fontSize: '0.875rem',
@@ -211,8 +209,8 @@ const Contact = () => {
             </div>
           </div>
           <div>
-            <label 
-              htmlFor="phone-number" 
+            <label
+              htmlFor="phone-number"
               style={{
                 display: 'block',
                 fontSize: '0.875rem',
@@ -263,15 +261,15 @@ const Contact = () => {
                     transform: 'translateY(-50%)',
                     pointerEvents: 'none',
                   }}>
-                    <svg 
-                      xmlns="http://www.w3.org/2000/svg" 
-                      width="16" 
-                      height="16" 
-                      viewBox="0 0 16 16" 
-                      fill="none" 
-                      stroke="currentColor" 
-                      strokeWidth="2" 
-                      strokeLinecap="round" 
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 16 16"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
                       strokeLinejoin="round"
                       style={{ color: '#6B7280' }}
                     >
@@ -300,8 +298,8 @@ const Contact = () => {
             </div>
           </div>
           <div>
-            <label 
-              htmlFor="message" 
+            <label
+              htmlFor="message"
               style={{
                 display: 'block',
                 fontSize: '0.875rem',
@@ -382,8 +380,8 @@ const Contact = () => {
               color: '#4B5563',
             }}>
               By selecting this, you agree to our{' '}
-              <a 
-                href="#" 
+              <a
+                href="#"
                 style={{
                   fontWeight: 600,
                   color: '#00C2FF',

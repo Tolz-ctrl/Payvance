@@ -23,4 +23,24 @@ export const PAYMENT_GATEWAY_CONFIG = {
     }
 };
 
+export const UTILITY_PROVIDERS_CONFIG = {
+    ELECTRICITY: {
+        IBEDC: { name: 'Ibadan Electricity Distribution Company', code: 'ibedc' },
+        EKEDC: { name: 'Eko Electricity Distribution Company', code: 'ekedc' },
+        KAEDC: { name: 'Kaduna Electric', code: 'kaedc' },
+        PHEDC: { name: 'Port Harcourt Electric', code: 'phedc' },
+    },
+    CABLE_TV: {
+        DSTV: { name: 'DStv', code: 'dstv' },
+        GOTV: { name: 'GOtv', code: 'gotv' },
+        STARTIMES: { name: 'StarTimes', code: 'startimes' },
+    },
+    INTERNET: {
+        MTN: { name: 'MTN Data', code: 'mtn-data' },
+        AIRTEL: { name: 'Airtel Data', code: 'airtel-data' },
+        GLO: { name: 'Glo Data', code: 'glo-data' },
+        ETISALAT: { name: '9mobile Data', code: '9mobile-data' },
+    }
+};
+
 

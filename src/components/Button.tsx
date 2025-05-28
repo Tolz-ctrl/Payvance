@@ -1,14 +1,14 @@
 import React from 'react';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-    variant?: 'primary' | 'secondary';
+    variant?: 'primary' | 'secondary' | 'danger';
     size?: 'small' | 'medium' | 'large';
     fullWidth?: boolean;
     loading?: boolean;
     icon?: React.ElementType;
 }
 
-const Button = ({ 
+const Button = ({
     variant = 'primary',
     size = 'medium',
     fullWidth = false,
@@ -16,7 +16,7 @@ const Button = ({
     icon: Icon,
     children,
     disabled,
-    ...props 
+    ...props
 }: ButtonProps) => {
     const baseStyles = {
         display: 'inline-flex',
@@ -46,6 +46,16 @@ const Button = ({
             color: '#E6EAF1',
             hover: {
                 backgroundColor: '#2C3447',
+            },
+        },
+        danger: {
+            backgroundColor: '#EF4444',
+            color: '#FFFFFF',
+            boxShadow: '0px 4px 15px rgba(239, 68, 68, 0.2)',
+            hover: {
+                backgroundColor: '#DC2626',
+                transform: 'translateY(-2px)',
+                boxShadow: '0px 6px 20px rgba(239, 68, 68, 0.3)',
             },
         },
     };
@@ -98,7 +108,7 @@ const Button = ({
         >
             {loading ? (
                 <>
-                    <span 
+                    <span
                         style={{
                             width: '16px',
                             height: '16px',

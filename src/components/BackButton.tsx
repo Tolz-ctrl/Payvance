@@ -7,13 +7,13 @@ interface BackButtonProps {
   className?: string;
 }
 
-const BackButton: React.FC<BackButtonProps> = ({ 
-  label = 'Back', 
-  className = '' 
+const BackButton: React.FC<BackButtonProps> = ({
+  label = 'Back',
+  className = ''
 }) => {
   const navigate = useNavigate();
   const [isHovered, setIsHovered] = useState(false);
-  
+
   return (
     <button
       onClick={() => navigate(-1)}
@@ -23,7 +23,6 @@ const BackButton: React.FC<BackButtonProps> = ({
         display: 'flex',
         alignItems: 'center',
         gap: '8px',
-        color: '#64748B',
         background: 'none',
         border: 'none',
         cursor: 'pointer',

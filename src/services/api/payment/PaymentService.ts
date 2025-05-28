@@ -45,27 +45,27 @@ class PaymentService {
     if (!amount || amount <= 0) {
       throw new Error('Invalid payment amount');
     }
-    
+
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       throw new Error('Invalid email address');
     }
-    
+
     const validPaymentMethods = ['card', 'bank', 'ussd', 'qr', 'bank_transfer', 'opay', 'moniepoint'];
     if (!validPaymentMethods.includes(paymentMethod)) {
       throw new Error('Invalid payment method');
     }
-    
+
     const validGateways = ['paystack', 'flutterwave'];
     if (!validGateways.includes(gateway)) {
       throw new Error('Unsupported payment gateway');
     }
-    
+
     if (gateway === 'paystack') {
       return this.initializePaystackPayment({ amount, email, paymentMethod, metadata });
     } else if (gateway === 'flutterwave') {
       return this.initializeFlutterwavePayment({ amount, email, paymentMethod, metadata });
     }
-    
+
     throw new Error('Unsupported payment gateway');
   }
 
@@ -81,7 +81,7 @@ class PaymentService {
     metadata: unknown;
   }): Promise<PaymentResponse> {
     const channels = this.getPaymentChannels(paymentMethod);
-    
+
     try {
       // Call Paystack API directly
       const response = await axios.post(
@@ -102,7 +102,7 @@ class PaymentService {
           }
         }
       );
-      
+
       return response.data;
     } catch (error) {
       console.error('Payment initialization failed:', error);
@@ -141,7 +141,7 @@ class PaymentService {
           }
         }
       );
-      
+
       return response.data;
     } catch (error) {
       console.error('Flutterwave payment initialization failed:', error);
@@ -155,7 +155,7 @@ class PaymentService {
     } else if (gateway === 'flutterwave') {
       return this.verifyFlutterwaveTransaction(reference);
     }
-    
+
     throw new Error('Unsupported payment gateway');
   }
 
@@ -170,7 +170,7 @@ class PaymentService {
           }
         }
       );
-      
+
       return response.data;
     } catch (error) {
       console.error('Transaction verification failed:', error);
@@ -189,7 +189,7 @@ class PaymentService {
           }
         }
       );
-      
+
       return response.data;
     } catch (error) {
       console.error('Flutterwave transaction verification failed:', error);
@@ -239,12 +239,7 @@ class PaymentService {
     }
   }
 
-  private formatErrorDetails(error: unknown): string {
-    if (error instanceof Error) {
-      return error.message;
-    }
-    return String(error);
-  }
+
 }
 
 export default new PaymentService();

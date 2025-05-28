@@ -31,7 +31,7 @@ const Sidebar = ({ isOpen }: SidebarProps) => {
     const location = useLocation();
 
     return (
-        <aside 
+        <aside
             style={{
                 backgroundColor: '#121826',
                 width: isOpen ? '240px' : '80px',
@@ -47,7 +47,7 @@ const Sidebar = ({ isOpen }: SidebarProps) => {
                 overflow: 'hidden', // Prevent content overflow during transition
             }}
         >
-            <nav style={{ 
+            <nav style={{
                 flex: 1,
                 display: 'flex',
                 flexDirection: 'column',
@@ -56,14 +56,11 @@ const Sidebar = ({ isOpen }: SidebarProps) => {
                 overflowX: 'hidden',
                 msOverflowStyle: 'none', // Hide scrollbar in IE/Edge
                 scrollbarWidth: 'none', // Hide scrollbar in Firefox
-                '&::-webkit-scrollbar': { // Hide scrollbar in Chrome/Safari
-                    display: 'none'
-                }
-            }}>
+            } as React.CSSProperties}>
                 {navItems.map((item) => {
                     const isActive = location.pathname === item.path;
                     const Icon = item.icon;
-                    
+
                     return (
                         <Link
                             key={item.path}
@@ -102,7 +99,7 @@ const Sidebar = ({ isOpen }: SidebarProps) => {
                                 padding: `0 ${isOpen ? '24px' : '28px'}`,
                                 transition: 'padding 0.3s ease',
                             }}>
-                                <Icon 
+                                <Icon
                                     style={{
                                         width: '20px',
                                         height: '20px',

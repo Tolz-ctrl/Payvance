@@ -1,10 +1,10 @@
-import React from "react";
+
 import { useNavigate } from "react-router-dom";
 import { ArrowLeftIcon } from "@heroicons/react/24/outline";
 
 interface Section {
   title: string;
-  content: string | JSX.Element;
+  content: string | React.ReactElement;
 }
 
 const terms: Section[] = [
@@ -21,8 +21,8 @@ const terms: Section[] = [
   {
     title: "3. Services We Provide",
     content: (
-      <ul style={{ 
-        listStyleType: 'disc', 
+      <ul style={{
+        listStyleType: 'disc',
         paddingLeft: '20px',
         display: 'flex',
         flexDirection: 'column',
@@ -115,7 +115,7 @@ const terms: Section[] = [
 
 const TermsAndConditions: React.FC = () => {
   const navigate = useNavigate();
-  
+
   return (
     <div style={{
       maxWidth: '1000px',
@@ -152,25 +152,25 @@ const TermsAndConditions: React.FC = () => {
         <ArrowLeftIcon style={{ width: '16px', height: '16px' }} />
         Back
       </button>
-      
+
       <header style={{ marginBottom: '32px' }}>
-        <h1 style={{ 
-          fontSize: '28px', 
+        <h1 style={{
+          fontSize: '28px',
           fontWeight: 'bold',
           color: '#0B0F1A',
           marginBottom: '8px'
         }}>
           Payvance Terms and Conditions
         </h1>
-        <p style={{ 
-          fontSize: '14px', 
+        <p style={{
+          fontSize: '14px',
           color: '#64748B'
         }}>
           Effective Date: May 23, 2025
         </p>
       </header>
 
-      <p style={{ 
+      <p style={{
         marginBottom: '32px',
         color: '#475569',
         lineHeight: '1.6'
@@ -182,20 +182,20 @@ const TermsAndConditions: React.FC = () => {
 
       {terms.map((section, idx) => {
         // Create an ID for the section based on its title
-        const sectionId = section.title.toLowerCase().includes('security') ? 'security' : 
+        const sectionId = section.title.toLowerCase().includes('security') ? 'security' :
                           section.title.toLowerCase().includes('privacy') ? 'privacy' : '';
-        
+
         return (
           <section key={idx} id={sectionId} style={{ marginBottom: '28px' }}>
-            <h2 style={{ 
-              fontSize: '18px', 
+            <h2 style={{
+              fontSize: '18px',
               fontWeight: '600',
               color: '#0B0F1A',
               marginBottom: '12px'
             }}>
               {section.title}
             </h2>
-            <div style={{ 
+            <div style={{
               color: '#475569',
               fontSize: '15px',
               lineHeight: '1.6'
@@ -205,7 +205,7 @@ const TermsAndConditions: React.FC = () => {
           </section>
         );
       })}
-      
+
       <div style={{
         marginTop: '40px',
         paddingTop: '20px',

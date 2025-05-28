@@ -1,10 +1,9 @@
 import { Link } from 'react-router-dom';
-import { 
-    ArrowRightIcon, 
+import {
+    ArrowRightIcon,
     CurrencyDollarIcon,
     WalletIcon,
     BanknotesIcon,
-    ChartBarIcon,
     ArrowTrendingUpIcon,
     Cog6ToothIcon,
     CheckCircleIcon
@@ -36,18 +35,18 @@ const Landing = () => {
                 backgroundColor: '#121826',
             }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <CurrencyDollarIcon 
-                        style={{ 
-                            width: '32px', 
+                    <CurrencyDollarIcon
+                        style={{
+                            width: '32px',
                             height: '32px',
                             color: '#00C2FF'
-                        }} 
+                        }}
                     />
                     <span style={{ fontSize: '24px', fontWeight: 'bold', color: '#FFFFFF' }}>Payvance</span>
                 </div>
                 <div style={{ display: 'flex', gap: '32px', alignItems: 'center' }}>
-                    <Link 
-                        to="/about" 
+                    <Link
+                        to="/about"
                         style={navLinkStyle}
                         onMouseEnter={e => {
                             e.currentTarget.style.backgroundColor = '#1A1F2E';
@@ -60,8 +59,8 @@ const Landing = () => {
                     >
                         About
                     </Link>
-                    <Link 
-                        to="/features" 
+                    <Link
+                        to="/features"
                         style={navLinkStyle}
                         onMouseEnter={e => {
                             e.currentTarget.style.backgroundColor = '#1A1F2E';
@@ -74,8 +73,8 @@ const Landing = () => {
                     >
                         Features
                     </Link>
-                    <Link 
-                        to="/contact" 
+                    <Link
+                        to="/contact"
                         style={navLinkStyle}
                         onMouseEnter={e => {
                             e.currentTarget.style.backgroundColor = '#1A1F2E';
@@ -88,8 +87,8 @@ const Landing = () => {
                     >
                         Contact
                     </Link>
-                    <Link 
-                        to="/login" 
+                    <Link
+                        to="/login"
                         style={navLinkStyle}
                         onMouseEnter={e => {
                             e.currentTarget.style.backgroundColor = '#1A1F2E';
@@ -102,8 +101,8 @@ const Landing = () => {
                     >
                         Login
                     </Link>
-                    <Link 
-                        to="/register" 
+                    <Link
+                        to="/register"
                         style={{
                             backgroundColor: '#00C2FF',
                             color: '#121826',
@@ -157,8 +156,8 @@ const Landing = () => {
                 }}>
                     Pay all your bills in one place, track expenses, and manage recurring payments effortlessly.
                 </p>
-                <Link 
-                    to="/register" 
+                <Link
+                    to="/register"
                     style={{
                         display: 'inline-flex',
                         alignItems: 'center',
@@ -204,38 +203,38 @@ const Landing = () => {
                     }}>
                         Get started with Payvance in minutes and simplify your bill payments forever
                     </p>
-                    
+
                     <div style={{
                         display: 'grid',
                         gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
                         gap: '32px',
                     }}>
-                        <StepCard 
+                        <StepCard
                             number="1"
                             title="Create Your Account"
                             description="Sign up for a free Payvance account in less than 2 minutes. All you need is your email and phone number."
                             icon={<CurrencyDollarIcon style={{ width: '32px', height: '32px', color: '#00C2FF' }} />}
                         />
-                        <StepCard 
+                        <StepCard
                             number="2"
                             title="Fund Your Wallet"
                             description="Add funds to your Payvance wallet using your debit card, bank transfer, or other payment methods."
                             icon={<WalletIcon style={{ width: '32px', height: '32px', color: '#00C2FF' }} />}
                         />
-                        <StepCard 
+                        <StepCard
                             number="3"
                             title="Pay Your Bills"
                             description="Select the bills you want to pay, set up recurring payments, and enjoy the convenience of one-stop bill payments."
                             icon={<BanknotesIcon style={{ width: '32px', height: '32px', color: '#00C2FF' }} />}
                         />
                     </div>
-                    
+
                     <div style={{
                         textAlign: 'center',
                         marginTop: '48px',
                     }}>
-                        <Link 
-                            to="/register" 
+                        <Link
+                            to="/register"
                             style={{
                                 display: 'inline-flex',
                                 alignItems: 'center',
@@ -293,13 +292,13 @@ const Landing = () => {
                     }}>
                         Designed to simplify your bill payments and give you complete control
                     </p>
-                    
+
                     <div style={{
                         display: 'grid',
                         gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
                         gap: '32px',
                     }}>
-                        <CoreFeatureCard 
+                        <CoreFeatureCard
                             title="Virtual Wallet"
                             description="A secure digital wallet for all your bill payments and transactions."
                             features={[
@@ -310,8 +309,8 @@ const Landing = () => {
                             ]}
                             icon={<WalletIcon style={{ width: '48px', height: '48px', color: '#00C2FF' }} />}
                         />
-                        
-                        <CoreFeatureCard 
+
+                        <CoreFeatureCard
                             title="Utility Prioritization"
                             description="Set payment priorities and manage payment order when funds are limited."
                             features={[
@@ -322,8 +321,8 @@ const Landing = () => {
                             ]}
                             icon={<ArrowTrendingUpIcon style={{ width: '48px', height: '48px', color: '#00C2FF' }} />}
                         />
-                        
-                        <CoreFeatureCard 
+
+                        <CoreFeatureCard
                             title="Settings Panel"
                             description="Comprehensive control panel to manage all your payment preferences."
                             features={[
@@ -359,7 +358,7 @@ const Landing = () => {
                         gap: '32px',
                     }}>
                         {features.map((feature, index) => (
-                            <div 
+                            <div
                                 key={index}
                                 style={{
                                     backgroundColor: '#FFFFFF',
@@ -402,15 +401,15 @@ const Landing = () => {
 };
 
 // Step Card Component
-const StepCard = ({ 
-    number, 
-    title, 
-    description, 
-    icon 
-}: { 
-    number: string; 
-    title: string; 
-    description: string; 
+const StepCard = ({
+    number,
+    title,
+    description,
+    icon
+}: {
+    number: string;
+    title: string;
+    description: string;
     icon: React.ReactNode;
 }) => {
     return (
@@ -476,14 +475,14 @@ const StepCard = ({
 };
 
 // Core Feature Card Component
-const CoreFeatureCard = ({ 
-    title, 
-    description, 
+const CoreFeatureCard = ({
+    title,
+    description,
     features,
-    icon 
-}: { 
-    title: string; 
-    description: string; 
+    icon
+}: {
+    title: string;
+    description: string;
     features: string[];
     icon: React.ReactNode;
 }) => {
@@ -548,9 +547,9 @@ const CoreFeatureCard = ({
                             alignItems: 'center',
                             marginBottom: '12px',
                         }}>
-                            <CheckCircleIcon style={{ 
-                                width: '20px', 
-                                height: '20px', 
+                            <CheckCircleIcon style={{
+                                width: '20px',
+                                height: '20px',
                                 color: '#00C2FF',
                                 marginRight: '12px',
                             }} />

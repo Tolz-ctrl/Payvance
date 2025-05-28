@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import {
-    BanknotesIcon, 
+    BanknotesIcon,
     ClockIcon,
     ChartBarIcon,
     BoltIcon,
@@ -96,8 +96,8 @@ const Dashboard = () => {
                 marginBottom: '32px',
                 border: '1px solid #E2E8F0'
             }}>
-                <h2 style={{ 
-                    fontSize: '18px', 
+                <h2 style={{
+                    fontSize: '18px',
                     fontWeight: 'bold',
                     marginBottom: '24px'
                 }}>
@@ -134,8 +134,8 @@ const Dashboard = () => {
                     padding: '24px',
                     border: '1px solid #E2E8F0'
                 }}>
-                    <h2 style={{ 
-                        fontSize: '18px', 
+                    <h2 style={{
+                        fontSize: '18px',
                         fontWeight: 'bold',
                         marginBottom: '24px'
                     }}>
@@ -160,8 +160,8 @@ const Dashboard = () => {
                     padding: '24px',
                     border: '1px solid #E2E8F0'
                 }}>
-                    <h2 style={{ 
-                        fontSize: '18px', 
+                    <h2 style={{
+                        fontSize: '18px',
                         fontWeight: 'bold',
                         marginBottom: '24px'
                     }}>
@@ -199,13 +199,13 @@ const Dashboard = () => {
 };
 
 // Component for metric cards
-const MetricCard = ({ 
-    title, 
-    value, 
-    icon: Icon, 
-    trend, 
-    trendDirection 
-}: { 
+const MetricCard = ({
+    title,
+    value,
+    icon: Icon,
+    trend,
+    trendDirection
+}: {
     title: string;
     value: string;
     icon: React.ElementType;
@@ -224,7 +224,7 @@ const MetricCard = ({
         </div>
         <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px' }}>
             <span style={{ fontSize: '24px', fontWeight: 'bold' }}>{value}</span>
-            <span style={{ 
+            <span style={{
                 color: trendDirection === 'up' ? '#10B981' : '#EF4444',
                 fontSize: '14px'
             }}>
@@ -235,10 +235,10 @@ const MetricCard = ({
 );
 
 // Component for utility usage cards
-const UtilityCard = ({ 
-    type, 
-    amount, 
-    change, 
+const UtilityCard = ({
+    type,
+    amount,
+    change,
     icon: Icon,
     isCustomIcon = false
 }: UtilityUsage) => (
@@ -249,19 +249,19 @@ const UtilityCard = ({
     }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '12px' }}>
             {isCustomIcon ? (
-                <img 
-                    src={Icon as string} 
+                <img
+                    src={Icon as string}
                     alt={`${type} icon`}
-                    style={{ 
-                        width: '24px', 
+                    style={{
+                        width: '24px',
                         height: '24px',
                         objectFit: 'contain'
-                    }} 
+                    }}
                 />
             ) : (
                 <Icon style={{ width: '24px', height: '24px', color: '#00C2FF' }} />
             )}
-            <span style={{ 
+            <span style={{
                 color: change > 0 ? '#10B981' : change < 0 ? '#EF4444' : '#6A7385',
                 fontSize: '14px'
             }}>
@@ -300,12 +300,12 @@ const SpendingBar = ({ category, amount, percentage }: SpendingCategory) => (
 );
 
 // Component for payment schedule items
-const PaymentItem = ({ 
-    title, 
-    amount, 
-    dueDate, 
-    status 
-}: { 
+const PaymentItem = ({
+    title,
+    amount,
+    dueDate,
+    status
+}: {
     title: string;
     amount: number;
     dueDate: string;
@@ -339,10 +339,10 @@ const PaymentItem = ({
 );
 
 // New Dashboard Footer Component
-const DashboardFooter = ({ 
-    user, 
-    onLogout 
-}: { 
+const DashboardFooter = ({
+    user,
+    onLogout
+}: {
     user: { name: string; email: string } | null;
     onLogout: () => void;
 }) => (
@@ -360,8 +360,8 @@ const DashboardFooter = ({
         }}>
             {/* User Profile Section */}
             <div>
-                <h3 style={{ 
-                    fontSize: '16px', 
+                <h3 style={{
+                    fontSize: '16px',
                     fontWeight: 'bold',
                     marginBottom: '16px',
                     display: 'flex',
@@ -399,8 +399,8 @@ const DashboardFooter = ({
 
             {/* Quick Actions */}
             <div>
-                <h3 style={{ 
-                    fontSize: '16px', 
+                <h3 style={{
+                    fontSize: '16px',
                     fontWeight: 'bold',
                     marginBottom: '16px',
                     display: 'flex',
@@ -420,8 +420,8 @@ const DashboardFooter = ({
 
             {/* Support */}
             <div>
-                <h3 style={{ 
-                    fontSize: '16px', 
+                <h3 style={{
+                    fontSize: '16px',
                     fontWeight: 'bold',
                     marginBottom: '16px',
                     display: 'flex',

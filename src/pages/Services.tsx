@@ -1,7 +1,7 @@
-import React from 'react';
-import { 
-    WalletIcon, 
-    ClockIcon, 
+
+import {
+    WalletIcon,
+    ClockIcon,
     ChartBarIcon,
     ShieldCheckIcon,
     BanknotesIcon,
@@ -312,7 +312,7 @@ const Services = () => {
                                     Coming Soon
                                 </div>
                             )}
-                            
+
                             <div style={{
                                 display: 'flex',
                                 alignItems: 'center',

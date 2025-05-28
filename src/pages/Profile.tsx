@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import { useState, useRef } from 'react';
 import { useUser } from '../contexts/UserContext';
 import Button from '../components/Button';
 
@@ -32,10 +32,10 @@ const Profile = () => {
             // TODO: Implement actual image upload API call
             const formData = new FormData();
             formData.append('image', file);
-            
+
             // Simulated API call
             await new Promise(resolve => setTimeout(resolve, 1000));
-            
+
             setMessage({ type: 'success', text: 'Profile picture updated successfully' });
         } catch (error) {
             setMessage({ type: 'error', text: 'Failed to update profile picture' });
@@ -102,9 +102,9 @@ const Profile = () => {
                         overflow: 'hidden'
                     }}>
                         {user?.profilePicture ? (
-                            <img 
-                                src={user.profilePicture} 
-                                alt="Profile" 
+                            <img
+                                src={user.profilePicture}
+                                alt="Profile"
                                 style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                             />
                         ) : (

@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { 
-    QuestionMarkCircleIcon, 
+import { useState } from 'react';
+import {
+    QuestionMarkCircleIcon,
     ChatBubbleLeftRightIcon,
     EnvelopeIcon,
     PhoneIcon,
@@ -136,7 +136,7 @@ const Support = () => {
             </div>
 
             {/* FAQs */}
-            <div id="faqs" style={{ 
+            <div id="faqs" style={{
                 marginBottom: '48px',
                 scrollMarginTop: '100px' // This ensures the section header is visible when scrolled to
             }}>
@@ -195,7 +195,7 @@ const Support = () => {
             </div>
 
             {/* Contact Form */}
-            <div id="contact" style={{ 
+            <div id="contact" style={{
                 scrollMarginTop: '100px' // This ensures the section header is visible when scrolled to
             }}>
                 <h2 style={{
